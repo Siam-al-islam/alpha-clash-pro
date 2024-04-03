@@ -1,6 +1,12 @@
 function continueGame() {
     const alphabet = getRandomAlphabet()
-    console.log(alphabet)
+
+    // set random alphabet to the screen 
+    const currentAlphabet = document.getElementById('current-alphabet');
+    currentAlphabet.innerText = alphabet.toUpperCase();
+
+    // set bg color 
+    setBackgroundColorById(alphabet)
 }
 
 function play() {
