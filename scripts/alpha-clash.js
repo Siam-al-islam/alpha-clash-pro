@@ -7,7 +7,9 @@ function handleKeyboardButtonPress(event) {
     const expectedAlpabet = currentAlphabetText.toLowerCase();
     // check 
     if (pressedKey === expectedAlpabet) {
-        console.log('you winnn !!!')
+        console.log('you winnn !!!');
+        removeBackgroundColorById(expectedAlpabet);
+        continueGame();
     }
     else {
         console.log('Try next time')
@@ -18,11 +20,9 @@ document.addEventListener('keyup', handleKeyboardButtonPress)
 
 function continueGame() {
     const alphabet = getRandomAlphabet()
-
     // set random alphabet to the screen 
     const currentAlphabet = document.getElementById('current-alphabet');
     currentAlphabet.innerText = alphabet.toUpperCase();
-
     // set bg color 
     setBackgroundColorById(alphabet)
 }
