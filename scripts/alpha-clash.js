@@ -19,8 +19,10 @@ function handleKeyboardButtonPress(event) {
         // start new round 
         removeBackgroundColorById(expectedAlpabet);
         continueGame();
+        hideElementById('danger-text')
     }
     else {
+        showElementById('danger-text');
         const currentLife = getTextElementValueById('current-life');
         // new life
         const newLife = currentLife - 1;
@@ -61,6 +63,7 @@ function gameOver() {
 function playAgain() {
     hideElementById('score');
     showElementById('play-ground');
-    setElementTextById('current-life', 5)
-    setElementTextById('current-score', 0)
+    setElementTextById('current-life', 5);
+    setElementTextById('current-score', 0);
+    hideElementById('danger-text');
 }
