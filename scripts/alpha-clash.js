@@ -1,3 +1,21 @@
+function handleKeyboardButtonPress(event) {
+    const pressedKey = event.key;
+    console.log(pressedKey)
+    // get the expected press 
+    const currentAlphabet = document.getElementById('current-alphabet');
+    const currentAlphabetText = currentAlphabet.innerText;
+    const expectedAlpabet = currentAlphabetText.toLowerCase();
+    // check 
+    if (pressedKey === expectedAlpabet) {
+        console.log('you winnn !!!')
+    }
+    else {
+        console.log('Try next time')
+    }
+}
+// capture keyboard key press 
+document.addEventListener('keyup', handleKeyboardButtonPress)
+
 function continueGame() {
     const alphabet = getRandomAlphabet()
 
