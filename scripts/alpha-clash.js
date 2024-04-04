@@ -1,6 +1,9 @@
 function handleKeyboardButtonPress(event) {
     const pressedKey = event.key;
-    console.log(pressedKey)
+    // stop game 
+    if (pressedKey === 'Escape') {
+        gameOver();
+    }
     // get the expected press 
     const currentAlphabet = document.getElementById('current-alphabet');
     const currentAlphabetText = currentAlphabet.innerText;
