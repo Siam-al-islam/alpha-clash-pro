@@ -7,7 +7,6 @@ function handleKeyboardButtonPress(event) {
     const expectedAlpabet = currentAlphabetText.toLowerCase();
     // check 
     if (pressedKey === expectedAlpabet) {
-        console.log('you winnn !!!');
         // update score 
         const currentScore = getTextElementValueById('current-score');
         // new score 
@@ -19,16 +18,19 @@ function handleKeyboardButtonPress(event) {
         continueGame();
     }
     else {
-        console.log('Try next time');
         const currentLife = getTextElementValueById('current-life');
         // new life
         const newLife = currentLife - 1;
         // set life 
         setElementTextById('current-life', newLife);
+
+        if (newLife === 0) {
+            gameOver();
+        }
     }
 }
 // capture keyboard key press 
-document.addEventListener('keyup', handleKeyboardButtonPress)
+document.addEventListener('keyup', handleKeyboardButtonPress);
 
 function continueGame() {
     const alphabet = getRandomAlphabet()
@@ -36,11 +38,26 @@ function continueGame() {
     const currentAlphabet = document.getElementById('current-alphabet');
     currentAlphabet.innerText = alphabet.toUpperCase();
     // set bg color 
-    setBackgroundColorById(alphabet)
+    setBackgroundColorById(alphabet);
 }
 
 function play() {
-    hideElementById('home-screen')
-    showElementById('play-ground')
-    continueGame()
+    hideElementById('home-screen');
+    showElementById('play-ground');
+    continueGame();
+}
+
+function gameOver() {
+    hideElementById('play-ground');
+    showElementById('score');
+    // update final score
+    const finalScore = getTextElementValueById('current-score');
+    setElementTextById('final-score', finalScore);
+}
+
+function playAgain() {
+    hideElementById('score');
+    showElementById('play-ground');
+    setElementTextById('current-life', 5)
+    setElementTextById('current-score', 0)
 }
